@@ -1,0 +1,35 @@
+.layout
+{
+    margin: 40px 100px 100px 300px;
+    width:600px;
+}
+.text
+{
+    text-align: center;
+}
+.content
+{
+    margin:40px 100px 100px 100px;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  .tables
+  {
+      margin-top: 10px;
+      margin-bottom: 10px;
+  }
+  .buttons
+  {
+      margin-left: 120px;
+  }
+  .space
+  {
+      width:10px;
+  }

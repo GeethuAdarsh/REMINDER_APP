@@ -1,0 +1,81 @@
+<app-header></app-header>
+<div class="layout">
+    <mat-card>
+        <mat-card-title class="text">UPDATE REMINDER</mat-card-title>
+        <div class="content">
+            <form class="example-form"  [formGroup]="updateForm" (ngSubmit)="update()">
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Subject</mat-label>
+                    <input matInput placeholder="" formControlName="subject">
+               </mat-form-field>
+
+               <mat-form-field class="example-full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea matInput #message maxlength="256" placeholder="" formControlName="description"></textarea>
+                    <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
+               </mat-form-field>
+
+               <table class="tables">
+                   <tr>
+                       <td>
+                           <mat-form-field  class="example-full-width" >
+                                <mat-label>Start date</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="start_date">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field>
+                       </td>
+                       <td class="space">
+                           
+                       </td>
+                       <td>
+                           <mat-form-field  class="example-full-width" >
+                               <mat-label>Start time</mat-label>
+                               <input matInput placeholder="HH:MM AM/PM" value="" formControlName="start_time">
+                           </mat-form-field>
+                       </td>
+                   </tr>
+                   <tr>
+                       <td>
+                           <mat-form-field  class="example-full-width" >
+                                <mat-label>End date</mat-label>
+                                <input matInput [matDatepicker]="picker1" formControlName="end_date"> 
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                            </mat-form-field>
+                       </td>
+                       <td class="space">
+                           
+                       </td>
+                       <td>
+                           <mat-form-field  class="example-full-width" >
+                               <mat-label>End time</mat-label>
+                               <input matInput placeholder="HH:MM AM/PM" value="" formControlName="end_time">
+                           </mat-form-field>
+                       </td>
+                   </tr>
+               </table>
+
+               <table class="buttons">
+                   <tr>
+                       <td>
+                           <button type="submit" mat-raised-button (click)="home()"  >Cancel</button>
+                       </td>
+                       <td class="space">
+
+                       </td>
+                       <td>
+                           <button type="submit" mat-raised-button color="primary">Save</button>
+                       </td>
+                   </tr>
+               </table>
+           
+           </form>
+
+        </div>
+    </mat-card>
+
+</div>
+
+

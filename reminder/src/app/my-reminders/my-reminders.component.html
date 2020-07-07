@@ -1,0 +1,74 @@
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand"  >REMINDER APP</a>
+  <form class="form-inline">
+    <button class="btn btn-outline-success my-2 my-sm-0" (click)="create()">CREATE</button>
+   
+  </form>
+</nav>
+
+<table >
+<tr>
+  <td class="header">
+     <h2>UPCOMING</h2>
+  </td>
+  <td>
+    <mat-form-field class="filter">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+    </mat-form-field>
+  </td>
+</tr>
+</table>
+<div class="mat-elevation-z8 table_content">
+<table mat-table [dataSource]="reminder" >
+
+ 
+
+  <ng-container matColumnDef="Subject">
+    <th mat-header-cell *matHeaderCellDef> Subject </th>
+    <td mat-cell *matCellDef="let element"> {{element.subject}} 
+      <a fxFlexFill [routerLink]="'/update_reminder/'+element.id" class="mat-row-link"></a>
+    </td>
+
+  </ng-container>
+  
+   <ng-container matColumnDef="Start_Date">
+    <th mat-header-cell *matHeaderCellDef> Start_Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.start_date | date:"dd/MM/yyyy"}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Start_Time">
+    <th mat-header-cell *matHeaderCellDef> Start_Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.start_time}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="End_Date">
+    <th mat-header-cell *matHeaderCellDef> End_Date </th>
+    <td mat-cell *matCellDef="let element"> {{element.end_date | date:"dd/MM/yyyy"}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="End_Time">
+    <th mat-header-cell *matHeaderCellDef> End_Time </th>
+    <td mat-cell *matCellDef="let element"> {{element.end_time}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Description">
+    <th mat-header-cell *matHeaderCellDef> Description </th>
+    <td mat-cell *matCellDef="let element" > {{element.description}}</td>
+  </ng-container>  
+ 
+    
+
+   
+  
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row (click)="getRecord(row)" *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  <!-- Row shown when there is no matching data. -->
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+  </tr>
+</table>
+<mat-paginator   (page)="changePage($event)"  [length]="total" [pageSizeOptions]="[5,10]"></mat-paginator>
+</div>
